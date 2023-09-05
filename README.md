@@ -19,9 +19,10 @@ nodejs+koa，vite+vue3+ts 使用router的history模式，需要注意的点
 > 
 > 现在不显示#，就需要用history，修改如下:
 > 
-> import { createRouter, createWebHashHistory,createWebHistory } from 'vue-router'
-> const router = createRouter({
->   history: import.meta.env.VITE_NODE_NEV_TYPE == 'location' ? createWebHistory() : createWebHistory('/childApp/docServer/'),
->   routes: routes,
->   ...
-> })
+import { createRouter, createWebHashHistory,createWebHistory } from 'vue-router'
+const router = createRouter({
+   history: import.meta.env.VITE_NODE_NEV_TYPE == 'location' ? createWebHistory() : createWebHistory('/childApp/docServer/'),
+   routes: routes,
+   ...
+})
+
