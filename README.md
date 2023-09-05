@@ -48,6 +48,7 @@ yarn add koa2-connect-history-api-fallback
 // import history from 'connect-history-api-fallback';
 import history from 'koa2-connect-history-api-fallback';
 ...
+// 其他配置信息省略
 ...
 // app.use(koaMount('/onlineApp/docCenter',koaStatic(path.join(__dirname, '../childApp/docServer'))));
 // 从上面修改成下面
@@ -78,6 +79,8 @@ app.use(history({
    // 	// { from: '/onlineApp/docCenter/md', to: '/childApp/docCenter/index.html', }
    // ]
 })).use(koaMount('/onlineApp/docCenter',koaStatic(path.join(__dirname, '../onlineApp/docCenter'))));
+...
+// 另外 这个history要放在app.use(router.routes());之前
 ```
 
 *如果有遗漏请私信，或者去代码查看*
