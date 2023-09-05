@@ -42,3 +42,42 @@ yarn add koa2-connect-history-api-fallback
 ```
 使用可以参考这里[connect-history-api-fallback源码](https://github.com/bripkens/connect-history-api-fallback)
 
+具体代码修改地方如下：node服务入口文件：index.ts
+```
+...
+// import history from 'connect-history-api-fallback';
+import history from 'koa2-connect-history-api-fallback';
+...
+...
+// app.use(koaMount('/onlineApp/docCenter',koaStatic(path.join(__dirname, '../childApp/docServer'))));
+// 从上面修改成下面
+app.use(history({
+   index: '/onlineApp/docCenter/index.html',
+   rewrites: [
+      // @ts-ignore
+        { from: /\/assets\/(.*)/g, to: function(context) {
+         let url = context.parsedUrl.pathname.split('/assets/')[1];
+         console.log(175, context, '/onlineApp/docCenter/assets/' + url);
+         return '/onlineApp/docServer/assets/' + url;
+      } },
+      // @ts-ignore
+        { from: /\/img\/(.*)/g, to: function(context) {
+         let url = context.parsedUrl.pathname.split('/img/')[1];
+         console.log(180, context, '/onlineApp/docCenter/img/' + url);
+         return '/onlineApp/docCenter/img/' + url;
+      } },
+      // @ts-ignore
+      { from: /\onlineApp\/docCenter\/(.*)/, to: '/childApp/docCenter/index.html' },
+   ]
+   // rewrites: [
+   // 	{ from: '/onlineApp/docCenter/(.*)', to: '/childApp/docCenter/index.html', }
+   // 	// { from: '/onlineApp/docCenter/article', to: '/childApp/docCenter/index.html', },
+   // 	// { from: '/onlineApp/docCenter/edit', to: '/childApp/docCenter/index.html', },
+   // 	// { from: '/onlineApp/docCenter/view', to: '/childApp/docCenter/index.html', },
+   // 	// { from: '/onlineApp/docCenter/category', to: '/childApp/docCenter/index.html', },
+   // 	// { from: '/onlineApp/docCenter/md', to: '/childApp/docCenter/index.html', }
+   // ]
+})).use(koaMount('/onlineApp/docCenter',koaStatic(path.join(__dirname, '../onlineApp/docCenter'))));
+```
+
+*如果有遗漏请私信，或者去代码查看*
