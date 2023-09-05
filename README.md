@@ -7,8 +7,9 @@ nodejs+koa，vite+vue3+ts 使用router的history模式，需要注意的点
 
 ## 前端的修改
 > 需要在router的配置文件里做一些修改：router/index.ts
+
 > vue之前控制浏览器中url显示#，是通过使用哈希
-> 
+
 > import { createRouter, createWebHashHistory,createWebHistory } from 'vue-router'
 > const router = createRouter({
 >   history: createWebHashHistory(),
