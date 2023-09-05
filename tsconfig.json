@@ -1,0 +1,40 @@
+{
+  // 需要编译的目录 **代表任意目录 *代表任意文件 
+  "include": [
+    "./src/**/*"
+  ],
+  // 相反代表不需要编译的目录 
+  "exclude": [],
+  // 代表引入其他json文件（可以引入其他相关的配置项）
+  "compilerOptions": {
+    "preserveConstEnums": false,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
+    // 指定ts被编译的js的版本
+    "target": "ES6",
+    // 指定要使用的模块化规范
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    // 用来指定编译后的文件所在的目录
+    "outDir": "./dist",
+    // 输出的文件，将代码合并成为一个文件,将多个ts文件编译成一个js文件（模块化的时候可能会报错）
+    // 是否对js文件进行编译，默认是false
+    "allowJs": true,
+    // 是否检查js代码是否符合规范，默认也是false
+    "checkJs": false,
+    // 是否移除注释
+    "removeComments": false,
+    // 不生成我们编译后的文件 
+    "noEmit": true,
+    // 当有错误时不生成编译后的文件
+    "noEmitOnError": false,
+    // 用来设置编译后的文件是否使用严格模式(js中import后自动进入严格模式)
+    "alwaysStrict": true,
+		"typeRoots": [
+			"./node_modules/@types/",
+			"./src/typescript"
+		],
+  }
+}
