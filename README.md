@@ -84,3 +84,10 @@ app.use(history({
 ```
 
 *如果有遗漏请私信，或者去代码查看*
+
+> 20230908 更新
+>
+> 因为koa2-connect-history-api-fallback会把其他错误路径也定向到docCenter下，所以如果要求过于严格
+> 就可以用koa-router来替换上面的这种方式
+> 具体代码写在了 index.copy.ts中，欢迎点开食用
+> 
