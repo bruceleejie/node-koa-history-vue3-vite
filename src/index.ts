@@ -96,13 +96,11 @@ app.use(history({
 		// @ts-ignore
         { from: /\/assets\/(.*)/g, to: function(context) {
 			let url = context.parsedUrl.pathname.split('/assets/')[1];
-			console.log(175, context, '/onlineApp/docCenter/assets/' + url);
 			return '/onlineApp/docCenter/assets/' + url;
 		} },
 		// @ts-ignore
         { from: /\/img\/(.*)/g, to: function(context) {
 			let url = context.parsedUrl.pathname.split('/img/')[1];
-			console.log(180, context, '/onlineApp/docCenter/img/' + url);
 			return '/onlineApp/docCenter/img/' + url;
 		} },
 		// @ts-ignore
